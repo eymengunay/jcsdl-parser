@@ -1,0 +1,9 @@
+# phpunit
+report
+report.txt
+
+# composer
+vendor/*
+bin
+composer.phar
+composer.lock
