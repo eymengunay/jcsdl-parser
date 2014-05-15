@@ -3,7 +3,7 @@
     "type":         "library",
     "description":  "JCSDL query string parser",
     "keywords":     ["jcsdl", "csdl"],
-    "homepage":     "https://github.com/eymengunay/jcsdl",
+    "homepage":     "https://github.com/eymengunay/jcsdl-parser",
     "license":      "MIT",
     "authors": [
         {
