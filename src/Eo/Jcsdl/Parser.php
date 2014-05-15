@@ -20,7 +20,7 @@ class Parser
      * 
      * @param  string $query
      * @param  float  $version
-     * @return mixed
+     * @return Query
      */
     public function parse($query)
     {
@@ -35,6 +35,7 @@ class Parser
 
         $jcsdlQuery = new Query();
         $jcsdlQuery
+            ->setRaw($query)
             ->setId($match[1])
             ->setLogic($logic)
         ;
@@ -95,11 +96,26 @@ class Parser
         $filters = array();
         for ($i = 0; $i < count($fields); $i++) {
             $filter = new Filter();
+            if (preg_match('/^(["\']).*\1$/m', $values[$i])) {
+                $value = trim($values[$i], '"');
+            } else {
+                switch ($values[$i]) {
+                    case 'true':
+                        $value = true;
+                        break;
+                    case 'false':
+                        $value = false;
+                        break;
+                    default:
+                        $value = intval($values[$i]);
+                        break;
+                }
+            }
             $filter
                 ->setId($ids[$i])
                 ->setField($fields[$i])
                 ->setOperator($operators[$i])
-                ->setValue($values[$i] ? preg_replace('/^([\'"])(.*)\\1$/', '\\2', $values[$i]) : null)
+                ->setValue($value)
             ;
             $filters[] = $filter;
         }

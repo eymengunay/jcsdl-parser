@@ -19,6 +19,11 @@ class Query
     /**
      * @var string
      */
+    protected $raw;
+
+    /**
+     * @var string
+     */
     protected $id;
 
     /**
@@ -57,6 +62,29 @@ class Query
         }
 
         return $array;
+    }
+
+    /**
+     * Set raw
+     * 
+     * @param  string $raw
+     * @return self
+     */
+    public function setRaw($raw)
+    {
+        $this->raw = $raw;
+
+        return $this;
+    }
+
+    /**
+     * Get raw
+     * 
+     * @return string
+     */
+    public function getRaw()
+    {
+        return $this->raw;
     }
 
     /**
