@@ -22,7 +22,6 @@
             "Eo\\Jcsdl\\Tests": "tests/"
         }
     },
-    "target-dir": "Eo/Jcsdl",
     "extra": {
         "branch-alias": {
             "dev-master": "0.1.x-dev"
