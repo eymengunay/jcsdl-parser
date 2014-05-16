@@ -88,7 +88,7 @@ class Parser
     {
         $regex = '\/\/\sJCSDL_START\s([a-f0-9]{32}).*\n(.*)\s(.*)\s(?:(.*))?\n\/\/\sJCSDL_END';
         if (!preg_match_all(sprintf('/%s/sU', $regex), $query, $matches)) {
-            throw new JcsdlException('Could not extract JCSDL query logic');
+            return array();
         }
         array_shift($matches);
         list($ids, $fields, $operators, $values) = $matches;
