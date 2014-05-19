@@ -61,21 +61,7 @@ class Parser
             throw new JcsdlException('Could not extract JCSDL query logic');
         }
 
-        $logic = end($match);
-
-        if ($logic === 'AND' or $logic === 'OR') {
-            $tmp   = '';
-            $count = substr_count($query, '// JCSDL_START');
-            for ($i = 1; $i <= $count; $i++) {
-                $tmp .= "$i";
-                if ($i !== $count) {
-                    $tmp .= $logic === 'AND' ? '&' : '|';
-                }
-            }
-            $logic = $tmp;
-        }
-
-        return $logic;
+        return end($match);
     }
 
     /**
